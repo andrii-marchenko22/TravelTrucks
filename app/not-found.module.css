@@ -1,0 +1,44 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+}
+
+.error-content {
+  text-align: center;
+}
+
+.error-content h1 {
+  font-size: 6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.error-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.lottie-animation {
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  padding: 0.5rem 1.35rem;
+  border-radius: 10px;
+  color: white;
+  background: #0b63f6;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px #3c82f8;
+}

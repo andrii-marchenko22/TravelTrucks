@@ -1,0 +1,57 @@
+.heroSection {
+  background: url('/background.webp') center/cover no-repeat;
+  width: 90rem;
+  height: 43.5rem;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.containerInformation {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 4rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  line-height: 4rem;
+  color: #f7f7f7;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  line-height: 0.66667;
+}
+
+.heroText {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #f7f7f7;
+  margin: 0 0 2.5rem 0;
+  font-weight: 600;
+  line-height: 1.33333;
+}
+
+.btnLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  border-radius: 12.5rem;
+  padding-block: 1rem;
+  padding-inline: 3.75rem;
+  width: 10.8125rem;
+  height: 3.5rem;
+  background-color: #e44848;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.btnLink:hover {
+  background-color: #d84343;
+}
