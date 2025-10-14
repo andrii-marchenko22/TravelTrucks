@@ -4,10 +4,10 @@ export type VehicleIcon = {
 };
 
 export const vehicleIcons: VehicleIcon[] = [
-  { id: 'ac', label: 'AC' },
+  { id: 'AC', label: 'AC' },
   { id: 'automatic', label: 'Automatic' },
   { id: 'kitchen', label: 'Kitchen' },
-  { id: 'tv', label: 'TV' },
+  { id: 'TV', label: 'TV' },
   { id: 'bathroom', label: 'Bathroom' },
   { id: 'petrol', label: 'Petrol' },
   { id: 'radio', label: 'Radio' },
@@ -18,7 +18,7 @@ export const vehicleIcons: VehicleIcon[] = [
 ];
 
 export const vehicleType: VehicleIcon[] = [
-  { id: 'van', label: 'Van' },
-  { id: 'fully-Integrated', label: 'Fully Integrated' },
+  { id: 'panelTruck', label: 'Van' },
+  { id: 'fullyIntegrated', label: 'Fully Integrated' },
   { id: 'alcove', label: 'Alcove' },
 ];

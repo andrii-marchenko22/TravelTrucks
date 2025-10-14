@@ -1,15 +1,13 @@
-export const equipmentTags = [
-  'ac',
-  'automatic',
-  'kitchen',
-  'tv',
-  'bathroom',
-  'petrol',
-  'radio',
-  'refrigerator',
-  'microwave',
-  'gas',
-  'water',
-] as const;
-
-export type EquipmentTag = (typeof equipmentTags)[number];
+export const equipmentKeyMap: Record<string, string> = {
+  ac: 'ac',
+  kitchen: 'kitchen',
+  tv: 'tv',
+  bathroom: 'bathroom',
+  refrigerator: 'refrigerator',
+  microwave: 'microwave',
+  radio: 'radio',
+  gas: 'gas',
+  water: 'water',
+  automatic: 'automatic',
+  petrol: 'petrol',
+};

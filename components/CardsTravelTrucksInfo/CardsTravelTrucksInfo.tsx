@@ -3,33 +3,27 @@
 import Image from 'next/image';
 import css from './CardsTravelTrucksInfo.module.css';
 import { TravelTruck } from '@/types/TravelTruck';
-import { useState } from 'react';
 import { vehicleIcons } from '@/types/VehicleIcon';
 import { useRouter } from 'next/navigation';
+import { useCampersStore } from '@/lib/store/CampersStore';
 
-type CardsTravelTrucksInfoProps = {
+type Props = {
   campers?: TravelTruck[];
   hasSearched: boolean;
 };
 
-const CardsTravelTrucksInfo: React.FC<CardsTravelTrucksInfoProps> = ({
-  campers = [],
-  hasSearched,
-}) => {
-  const [likedCampers, setLikedCampers] = useState<string[]>([]);
+const CardsTravelTrucksInfo: React.FC<Props> = ({ campers = [], hasSearched }) => {
   const router = useRouter();
+  const favorites = useCampersStore((s) => s.favorites);
+  const toggleFavorite = useCampersStore((s) => s.toggleFavorite);
 
-  const toggleLike = (id: string) => {
-    setLikedCampers((prev) => (prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]));
+  if (!hasSearched) return <p>Start your search to see available campers</p>;
+  if (campers.length === 0) return <p>No campers found</p>;
+
+  const formatPrice = (price?: number) => {
+    if (typeof price !== 'number') return '-';
+    return price.toFixed(2);
   };
-
-  if (!hasSearched) {
-    return <p>Start your search to see available campers</p>;
-  }
-
-  if (campers.length === 0) {
-    return <p>No campers found</p>;
-  }
 
   return (
     <div className={css.cardsContainer}>
@@ -54,16 +48,16 @@ const CardsTravelTrucksInfo: React.FC<CardsTravelTrucksInfoProps> = ({
               <div className={css.headerRow}>
                 <h3 className={css.cardTitle}>{camper.name}</h3>
                 <div className={css.priceAndFav}>
-                  <span className={css.price}>€{camper.price}</span>
+                  <span className={css.price}>€{formatPrice(camper.price)}</span>
                   <svg
                     className={css.heartIcon}
                     width={24}
                     height={24}
-                    onClick={() => toggleLike(camper.id)}
+                    onClick={() => toggleFavorite(camper.id)}
                   >
                     <use
                       href={
-                        likedCampers.includes(camper.id)
+                        favorites.includes(camper.id)
                           ? '/spriteTrevelCard.svg#redHeart'
                           : '/spriteTrevelCard.svg#heart'
                       }
@@ -71,6 +65,7 @@ const CardsTravelTrucksInfo: React.FC<CardsTravelTrucksInfoProps> = ({
                   </svg>
                 </div>
               </div>
+
               <div className={css.ratingRow}>
                 <svg className={css.starIcon} width={16} height={16}>
                   <use href="/spriteTrevelCard.svg#star" />

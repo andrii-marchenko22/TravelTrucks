@@ -30,11 +30,22 @@ const FormSearch: React.FC<FormSearchProps> = ({ loadCampers }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    loadCampers(1, {
-      equipment: selectedEquipment,
-      type: selectedType,
-      location: selectedLocation,
-    });
+
+    let location = selectedLocation?.trim();
+    if (location) {
+      const parts = location.split(',').map((p) => p.trim());
+      if (parts.length === 2) {
+        location = `${parts[1]}, ${parts[0]}`;
+      }
+    }
+
+    const filters: CamperFilters = {};
+
+    if (location) filters.location = location;
+    if (selectedType) filters.type = selectedType;
+    if (selectedEquipment.length > 0) filters.equipment = selectedEquipment;
+
+    loadCampers(1, filters);
   };
 
   return (

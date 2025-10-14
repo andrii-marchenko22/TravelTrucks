@@ -47,7 +47,7 @@ export type CamperResponse = {
 };
 
 export type CamperFilters = {
-  equipment?: string[];
-  type?: string | null;
   location?: string;
+  type?: string;
+  equipment?: string[];
 };
