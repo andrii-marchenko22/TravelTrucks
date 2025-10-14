@@ -22,13 +22,3 @@ export const vehicleType: VehicleIcon[] = [
   { id: 'fully-Integrated', label: 'Fully Integrated' },
   { id: 'alcove', label: 'Alcove' },
 ];
-
-export type NominatimResult = {
-  display_name: string;
-  address: {
-    city?: string;
-    town?: string;
-    village?: string;
-    country: string;
-  };
-};

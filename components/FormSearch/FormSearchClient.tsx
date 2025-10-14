@@ -1,73 +1,44 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { NominatimResult, vehicleIcons, vehicleType } from '../../types/VehicleIcon';
+import { useState } from 'react';
+import { vehicleIcons, vehicleType } from '../../types/VehicleIcon';
+import { useCityAutocomplete } from '@/lib/hooks/useCityAutocomplete';
 import css from './FormSearch.module.css';
-import useDebounce from '@/lib/hooks/useDebounce';
+import { CamperFilters } from '../../types/TravelTruck';
 
-const FormSearch = () => {
+type FormSearchProps = {
+  loadCampers: (page?: number, filters?: CamperFilters) => void;
+};
+
+const FormSearch: React.FC<FormSearchProps> = ({ loadCampers }) => {
   const [selectedEquipment, setSelectedEquipment] = useState<string[]>([]);
   const [selectedType, setSelectedType] = useState<string | null>(null);
-
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<string[]>([]);
   const [selectedLocation, setSelectedLocation] = useState('');
 
-  const debouncedQuery = useDebounce(query, 500);
+  const { results, setResults } = useCityAutocomplete(query);
 
   const toggleEquipment = (id: string) => {
-    if (selectedEquipment.includes(id)) {
-      setSelectedEquipment(selectedEquipment.filter((i) => i !== id));
-    } else {
-      setSelectedEquipment([...selectedEquipment, id]);
-    }
+    setSelectedEquipment((prev) =>
+      prev.includes(id) ? prev.filter((t) => t !== id) : [...prev, id],
+    );
   };
 
   const selectType = (id: string) => {
-    setSelectedType(id);
+    setSelectedType((prev) => (prev === id ? null : id));
   };
 
-  useEffect(() => {
-    if (!debouncedQuery) {
-      setResults([]);
-      return;
-    }
-
-    const fetchCities = async () => {
-      try {
-        const res = await axios.get<NominatimResult[]>(
-          'https://nominatim.openstreetmap.org/search',
-          {
-            params: {
-              format: 'json',
-              countrycodes: 'ua',
-              'accept-language': 'en',
-              q: debouncedQuery,
-              addressdetails: 1,
-              limit: 5,
-            },
-          },
-        );
-
-        const cities = res.data
-          .map((item) => {
-            const cityName = item.address.city || item.address.town || item.address.village;
-            return cityName ? `${cityName}, Ukraine` : null;
-          })
-          .filter((city): city is string => city !== null);
-
-        setResults(cities);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    fetchCities();
-  }, [debouncedQuery]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    loadCampers(1, {
+      equipment: selectedEquipment,
+      type: selectedType,
+      location: selectedLocation,
+    });
+  };
 
   return (
-    <form className={css.form}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <div className={css['search-box']}>
         <label htmlFor="location" className={css['location-label']}>
           Location

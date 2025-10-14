@@ -4,7 +4,6 @@
   width: 360px;
   height: auto;
   margin-bottom: 28px;
-  margin-top: 60px;
 }
 
 .location-label {
@@ -286,5 +285,5 @@
 }
 
 .searchBtn:hover {
-  background: #D84343;
+  background: #d84343;
 }

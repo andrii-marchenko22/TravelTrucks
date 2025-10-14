@@ -1,23 +1,16 @@
 .header {
   display: flex;
-  flex-direction: row;
+  padding: 24px 64px;
   align-items: center;
-  justify-content: flex-start;
-  gap: 28.125rem;
-  margin: 0 auto;
   border-bottom: 1px solid #f2f4f7;
-  padding-block: 1.5rem;
-  padding-inline: 4rem;
-  max-width: 90rem;
-  width: 100%;
-  height: 4.5rem;
-  box-sizing: border-box;
   background-color: #cfcfcf5b;
+  width: 1440px;
+  margin: 0 auto;
 }
 
 .navigation {
   list-style-type: none;
-  margin: 0;
+  margin-left: 450px;
   padding: 0;
 }
 
