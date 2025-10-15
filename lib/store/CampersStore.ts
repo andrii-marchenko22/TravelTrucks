@@ -74,7 +74,25 @@ export const useCampersStore = create<CampersStore>()(
             page,
             filters: filters ?? state.filters,
           }));
-        } catch (err) {
+        } catch (err: unknown) {
+          if (
+            typeof err === 'object' &&
+            err !== null &&
+            'response' in err &&
+            typeof (err as { response?: { status?: number } }).response === 'object' &&
+            (err as { response?: { status?: number } }).response !== null
+          ) {
+            const status = (err as { response?: { status?: number } }).response?.status;
+            if (status === 404) {
+              set({
+                campers: [],
+                total: 0,
+                page: 1,
+                filters,
+              });
+              return;
+            }
+          }
           console.error('loadCampers error:', err);
         } finally {
           set({ loading: false });
