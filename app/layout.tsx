@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: 'TravelTrucks — Find Your Ideal Truck',
     description:
       'Search and explore trucks with full specifications, images, and descriptions on TravelTrucks. Your one-stop resource for truck information.',
-    // url: '#',   після деплою додати лінк
+    url: '',
     images: [
       {
         url: '/trailer.webp',
