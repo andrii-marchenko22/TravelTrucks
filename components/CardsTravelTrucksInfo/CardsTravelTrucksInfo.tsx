@@ -92,7 +92,7 @@ const CardsTravelTrucksInfo: React.FC<Props> = ({ campers = [], hasSearched }) =
               </div>
               <button
                 className={css.showMoreBtn}
-                onClick={() => router.push(`/campers/${camper.id}`)}
+                onClick={() => router.push(`/catalog/${camper.id}`)}
               >
                 Show more
               </button>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import CardsTravelTrucksInfo from '@/components/CardsTravelTrucksInfo/CardsTravelTrucksInfo';
 import FormSearch from '@/components/FormSearch/FormSearchClient';
 import css from './page.module.css';
@@ -9,10 +9,10 @@ import { CamperFilters } from '@/types/TravelTruck';
 
 const Catalog = () => {
   const store = useCampersStore();
-  const { campers, total, page, filters, loadCampers, loading } = store;
+  const { campers, total, page, filters, loadCampers, loading, hasSearched, setHasSearched } =
+    store;
 
   const cardsWrapperRef = useRef<HTMLDivElement>(null);
-  const [hasSearched, setHasSearched] = useState(false);
 
   const handleSearch = (pageNum?: number, filtersParam?: CamperFilters) => {
     setHasSearched(true);
@@ -32,7 +32,7 @@ const Catalog = () => {
   return (
     <div className={css.catalogContainer}>
       <div className={css.filtersWrapper}>
-        <FormSearch loadCampers={handleSearch} />
+        <FormSearch loadCampers={handleSearch} initialFilters={filters} />
       </div>
 
       <div className={css.cardsWrapper} ref={cardsWrapperRef}>

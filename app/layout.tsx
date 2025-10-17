@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: 'TravelTrucks — Find Your Ideal Truck',
     description:
       'Search and explore trucks with full specifications, images, and descriptions on TravelTrucks. Your one-stop resource for truck information.',
-    url: 'travel-trucks-serg.vercel.app',
+    url: 'https://travel-trucks-serg.vercel.app/',
     images: [
       {
         url: '/trailer.webp',

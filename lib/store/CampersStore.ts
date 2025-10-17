@@ -12,6 +12,9 @@ type CampersStore = {
   total: number;
   loading: boolean;
 
+  hasSearched: boolean;
+  setHasSearched: (value: boolean) => void;
+
   setFilters: (filters?: CamperFilters) => void;
   resetFilters: () => void;
 
@@ -31,12 +34,15 @@ const initialStore = {
   perPage: 4,
   total: 0,
   loading: false,
+  hasSearched: false,
 };
 
 export const useCampersStore = create<CampersStore>()(
   persist(
     (set, get) => ({
       ...initialStore,
+
+      setHasSearched: (value: boolean) => set({ hasSearched: value }),
 
       setFilters: (filters) => set({ filters }),
       resetFilters: () => set({ filters: initialStore.filters }),
@@ -105,6 +111,7 @@ export const useCampersStore = create<CampersStore>()(
         filters: state.filters,
         favorites: state.favorites,
         campers: state.campers,
+        hasSearched: state.hasSearched,
       }),
     },
   ),

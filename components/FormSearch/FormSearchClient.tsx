@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { vehicleIcons, vehicleType } from '../../types/VehicleIcon';
 import { useCityAutocomplete } from '@/lib/hooks/useCityAutocomplete';
 import css from './FormSearch.module.css';
@@ -8,13 +8,16 @@ import { CamperFilters } from '../../types/TravelTruck';
 
 type FormSearchProps = {
   loadCampers: (page?: number, filters?: CamperFilters) => void;
+  initialFilters?: CamperFilters;
 };
 
-const FormSearch: React.FC<FormSearchProps> = ({ loadCampers }) => {
-  const [selectedEquipment, setSelectedEquipment] = useState<string[]>([]);
+const FormSearch: React.FC<FormSearchProps> = ({ loadCampers, initialFilters }) => {
+  const [selectedEquipment, setSelectedEquipment] = useState<string[]>(
+    initialFilters?.equipment ?? [],
+  );
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [query, setQuery] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState(initialFilters?.location ?? '');
 
   const { results, setResults } = useCityAutocomplete(query);
 
@@ -27,6 +30,14 @@ const FormSearch: React.FC<FormSearchProps> = ({ loadCampers }) => {
   const selectType = (id: string) => {
     setSelectedType((prev) => (prev === id ? null : id));
   };
+
+  useEffect(() => {
+    if (initialFilters) {
+      setSelectedEquipment(initialFilters.equipment ?? []);
+      setSelectedType(initialFilters.type ?? null);
+      setSelectedLocation(initialFilters.location ?? '');
+    }
+  }, [initialFilters]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

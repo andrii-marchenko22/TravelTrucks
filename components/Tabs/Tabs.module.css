@@ -1,0 +1,58 @@
+.tabsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin-bottom: 44px;
+}
+
+.tabHeaders {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dadde1;
+}
+
+.tabButton {
+  background: none;
+  border: none;
+  padding: 0;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  cursor: pointer;
+  position: relative;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tabButton:hover,
+.tabButton:focus,
+.tabButton.active {
+  color: #e44848;
+}
+
+.tabButton.active {
+  color: #101828;
+}
+
+.tabButton::after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #e44848;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tabButton.active::after {
+  transform: scaleX(1);
+}
