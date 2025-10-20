@@ -1,17 +1,46 @@
 .detailsWrapper {
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  border-radius: 10px;
   justify-content: flex-start;
 }
 
-.container {
+.tabsPanel {
+  width: 100%;
+  width: 1312px;
+}
+
+.contentArea {
+  display: flex;
+  gap: 40px;
+  margin-top: 56px;
+  width: 1440px;
+}
+
+.featuresContent {
+  width: 631px;
+  background-color: #cfcfcf5b;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background-color: #cfcfcf5b;
+  padding: 0;
+}
+
+.leftColumn {
   width: 631px;
-  height: 604px;
-  margin-top: 44px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.rightColumn {
+  width: 641px;
+  flex-shrink: 0;
+  border: 1px solid #dadde1;
+  border-radius: 10px;
 }
 
 .tags {
@@ -54,6 +83,7 @@
   line-height: 1.2;
   color: #101828;
   border-bottom: 1px solid #dadde1;
+  margin-top: 0;
   padding-bottom: 24px;
   margin-bottom: 24px;
 }
@@ -87,4 +117,72 @@
   line-height: 1.5;
   color: #101828;
   text-align: right;
+}
+
+.reviewsContainer {
+  width: 631px;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.reviewItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.reviewAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  background: #f2f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #e44848;
+}
+
+.reviewContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  padding-top: 8px;
+}
+
+.reviewerName {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.starIcon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+}
+
+.reviewComment {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
 }

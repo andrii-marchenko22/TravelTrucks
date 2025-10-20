@@ -1,0 +1,113 @@
+.containerWrapper {
+  margin: 44px 57px;
+  width: 527px;
+}
+
+.titleWrapper {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bookingForm label {
+  display: block;
+  width: 100%;
+}
+
+.formInput::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #101828;
+  margin-top: 44px;
+  padding: 0;
+  margin: 0;
+}
+
+.formText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+  padding: 0;
+  margin: 0;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.formInput {
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 18px;
+  background: #cfcfcf5b;
+  border: none;
+  outline: none;
+  width: 527px;
+}
+
+.formTextarea {
+  border-radius: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px;
+  background: #cfcfcf5b;
+  border: none;
+  outline: none;
+  resize: none;
+  min-height: 118px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #6c717b;
+}
+
+.formBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 200px;
+  padding-block: 16px;
+  padding-inline: 60px;
+  width: 166px;
+  height: 56px;
+  background: #e44848;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: #fff;
+  outline: none;
+  border: none;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.formBtn:hover,
+.formBtn:focus {
+  background: #d84343;
+}
+
+.bookingForm > button {
+  margin-top: 24px;
+}

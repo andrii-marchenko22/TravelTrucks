@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
+import { Toaster } from 'react-hot-toast';
 
 export const interRegular = Inter({
   weight: '400',
@@ -55,6 +56,7 @@ export default function RootLayout({
       <body className={`${interRegular.variable}`}>
         <TanStackProvider>
           <Header />
+          <Toaster position="top-right" reverseOrder={false} />
           <main>{children}</main>
         </TanStackProvider>
       </body>

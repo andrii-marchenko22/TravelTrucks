@@ -70,6 +70,7 @@ const CamperDetailsPage = async ({ params }: Props) => {
         ))}
       </div>
       <p className={css.description}>{camper.description}</p>
+
       <TabsDetail camper={camper} />
     </div>
   );

@@ -30,3 +30,8 @@ a {
   padding-left: 64px;
   padding-right: 64px;
 }
+
+input,
+textarea {
+  font-family: var(--font-inter-regular), sans-serif;
+}
